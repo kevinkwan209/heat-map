@@ -42,16 +42,6 @@ addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
 var heat = L.heatLayer(addressPoints).addTo(map),
     draw = true;
 
-map.on({
-    movestart: function () { draw = false; },
-    moveend:   function () { draw = true; },
-    mousemove: function (e) {
-        if (draw) {
-            heat.addLatLng(e.latlng);
-        }
-    }
-})
-
 </script>
 </body>
 </html>

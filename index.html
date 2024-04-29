@@ -6,7 +6,6 @@
     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
-    <script src="https://unpkg.com/wrld.js@1.x.x"></script>
     <style>
         #map { width: 100%; height: 100vh; background-color:#FFFFFF}
         body { font: 16px/1.4 "Helvetica Neue", Arial, sans-serif; margin: 0}
@@ -66,15 +65,13 @@ var map = new L.Map('map', {
     cursor: true
 });
     
-var polylinePoints = [
-    [37.781814, -122.404740],
-    [37.781719, -122.404637],
-    [37.781489, -122.404949],
-    [37.780704, -122.403945],
-    [37.780012, -122.404827]
-];            
-      
-var polyline = Wrld.polyline(polylinePoints).addTo(map);    
+var polyline = new L.Polyline([[25, -25], [25, 25], [-25, 25], [-25, -25]], {
+    weight: 10,
+}).addTo(map);
+
+var polygon = new L.Polygon(polyline.getLatLngs(), {
+    weight: polyline.options.weight
+}).addTo(map);
 
 addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
 

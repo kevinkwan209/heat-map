@@ -19,9 +19,7 @@
 
 <script src="dist/leaflet-heat.js"></script>
 
-<script src="heatmap_overworld_pos.js"></script>
-<script src="heatmap_overworld_neg1.js"></script>
-<script src="heatmap_overworld_neg2.js"></script>
+<script src="heatmap_overworld.js"></script>
 <script>
 
 var map = L.map('map').setView([0, 0], 4);
@@ -31,10 +29,6 @@ var tiles = L.tileLayer('', {
 }).addTo(map);
 
 addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
-addressPoints2 = addressPoints2.map(function (p) { return [p[0], p[1]]; });
-addressPoints3 = addressPoints3.map(function (p) { return [p[0], p[1]]; });
-
-addressPoints = addressPoints.concat(addressPoints2, addressPoints3);
 
 var heat = L.heatLayer(addressPoints, {minOpacity: 1, max: 100, radius: 1, blur: 1}).addTo(map),
     draw = true;

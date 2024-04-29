@@ -24,9 +24,9 @@
 
 var map = L.map('map').setView([-37.82109, 175.2193], 16);
 
-<!--var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors',
-}).addTo(map);-->
+var tiles = L.tileLayer('', {
+    attribution: '',
+}).addTo(map);
 
 addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
 

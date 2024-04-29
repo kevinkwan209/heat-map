@@ -66,10 +66,11 @@ var map = new L.Map('map', {
 });
     
 var latlngs = [
-    [4, -4],
-    [-4, 4],
     [4, 4],
-    [-4, -4]
+    [4, -4],
+    [-4, -4],
+    [-4, 4],
+    [4, 4]
 ];
 
 var polyline = L.polyline(latlngs, {color: '#D3D3D3', weight: 1, opacity: 0.5}).addTo(map);

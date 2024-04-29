@@ -9,6 +9,7 @@
     <style>
         #map { width: 100%; height: 100vh; background-color:#FFFFFF}
         body { font: 16px/1.4 "Helvetica Neue", Arial, sans-serif; margin: 0}
+        .leaflet-container a.leaflet-popup-close-button {color: #FFFFFF;}
         .ghbtns { position: relative; top: 4px; margin-left: 5px; }
         a { color: #0077ff; }
     </style>
@@ -28,13 +29,13 @@ L.CursorHandler = L.Handler.extend({
         this._popup = new L.Popup();
         this._map.on('mouseover', this._open, this);
         this._map.on('mousemove', this._update, this);
-        //this._map.on('mouseout', this._close, this);
+        this._map.on('mouseout', this._close, this);
     },
 
     removeHooks: function () {
         this._map.off('mouseover', this._open, this);
         this._map.off('mousemove', this._update, this);
-        //this._map.off('mouseout', this._close, this);
+        this._map.off('mouseout', this._close, this);
     },
     
     _open: function (e) {

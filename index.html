@@ -66,14 +66,44 @@ var map = new L.Map('map', {
 });
     
 var latlngs = [
-    [4, 4],
+    [[4, 4],
     [4, -4],
     [-4, -4],
     [-4, 4],
-    [4, 4]
+    [4, 4]],
+    
+    [[6, 6],
+    [6, -6],
+    [-6, -6],
+    [-6, 6],
+    [6, 6]],
+
+    [[8, 8],
+    [8, -8],
+    [-8, -8],
+    [-8, 8],
+    [8, 8]],
+
+    [[10, 10],
+    [10, -10],
+    [-10, -10],
+    [-10, 10],
+    [10, 10]],
+
+    [[15, 15],
+    [15, -15],
+    [-15, -15],
+    [-15, 15],
+    [15, 15]],
+
+    [[30, 30],
+    [30, -30],
+    [-30, -30],
+    [-30, 30],
+    [30, 30]]
 ];
 
-var polyline = L.polyline(latlngs, {color: '#D3D3D3', weight: 1, opacity: 0.5}).addTo(map);
+var polyline = L.polyline(latlngs, {color: '#D3D3D3', weight: 2, opacity: 0.5}).addTo(map);
 
 addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
 

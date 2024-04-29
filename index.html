@@ -65,21 +65,14 @@ var map = new L.Map('map', {
     cursor: true
 });
     
-var polyline = new L.Polyline([
+var latlngs = new L.Polyline([
     [4, -4], 
     [4, 4], 
     [-4, 4], 
     [-4, -4]
-], {
-    weight: 1,
-    color: '#D3D3D3',
-    opacity: 0.5,
-    fill: false
-}).addTo(map);
+];
 
-var polygon = new L.Polygon(polyline.getLatLngs(), {
-    weight: polyline.options.weight
-}).addTo(map);
+var polyline = L.polyline(latlngs, {color: 'light-gray'}).addTo(map);
 
 addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
 

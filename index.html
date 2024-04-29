@@ -66,13 +66,13 @@ var map = new L.Map('map', {
 });
     
 var latlngs = [
-    [4, -4], 
-    [4, 4], 
-    [-4, 4], 
+    [4, -4],
+    [-4, 4],
+    [4, 4],
     [-4, -4]
 ];
 
-var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+var polyline = L.polyline(latlngs, {color: '#D3D3D3', weight: 1, opacity: 0.5}).addTo(map);
 
 addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
 

@@ -65,8 +65,13 @@ var map = new L.Map('map', {
     cursor: true
 });
     
-var polyline = new L.Polyline([[25, -25], [25, 25], [-25, 25], [-25, -25]], {
-    weight: 10,
+var polyline = new L.Polyline([
+    [4, -4], 
+    [4, 4], 
+    [-4, 4], 
+    [-4, -4]
+], {
+    weight: 1,
 }).addTo(map);
 
 var polygon = new L.Polygon(polyline.getLatLngs(), {

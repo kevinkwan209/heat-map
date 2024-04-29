@@ -48,7 +48,7 @@ L.CursorHandler = L.Handler.extend({
 
     _update: function (e) {
         this._popup.setLatLng(e.latlng)
-            .setContent(e.lat * -100000 + ', ' + e.lng * 100000);
+            .setContent(e.latlng.toString());
     }
 
     
@@ -58,7 +58,7 @@ L.Map.addInitHook('addHandler', 'cursor', L.CursorHandler);
 
 var map = new L.Map('map', {
     center: [0, 0],
-    zoom: 4,
+    zoom: 3,
     cursor: true
 });
 

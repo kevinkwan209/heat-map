@@ -30,7 +30,7 @@ var tiles = L.tileLayer('', {
 
 addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
 
-var heat = L.heatLayer(addressPoints).addTo(map),
+var heat = L.heatLayer(addressPoints, {radius: 5}).addTo(map),
     draw = true;
 
 </script>

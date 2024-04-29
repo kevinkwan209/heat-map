@@ -64,6 +64,16 @@ var map = new L.Map('map', {
     zoom: 4,
     cursor: true
 });
+    
+var polylinePoints = [
+    [37.781814, -122.404740],
+    [37.781719, -122.404637],
+    [37.781489, -122.404949],
+    [37.780704, -122.403945],
+    [37.780012, -122.404827]
+];            
+      
+var polyline = Wrld.polyline(polylinePoints).addTo(map);    
 
 addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
 

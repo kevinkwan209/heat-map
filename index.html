@@ -72,6 +72,9 @@ var polyline = new L.Polyline([
     [-4, -4]
 ], {
     weight: 1,
+    color: #D3D3D3,
+    opacity: 0.5,
+    fill: false
 }).addTo(map);
 
 var polygon = new L.Polygon(polyline.getLatLngs(), {

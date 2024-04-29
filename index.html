@@ -51,7 +51,7 @@ L.CursorHandler = L.Handler.extend({
 
     _update: function (e) {
         this._popup.setLatLng(e.latlng)
-            .setContent(parseInt(e.latlng.lng * -100000) + "," + parseInt(e.latlng.lat * 100000));
+            .setContent(parseInt(e.latlng.lng * 100000) + "," + parseInt(e.latlng.lat * -100000));
     }
 
     
@@ -109,7 +109,7 @@ var latlngs = [
     [30, 30]]
 ];
 
-var polyline = L.polyline(latlngs, {color: '#D3D3D3', weight: 2, opacity: 0.5}).addTo(map);
+var polyline = L.polyline(latlngs, {color: '#D3D3D3', weight: 2, opacity: 0.3}).addTo(map);
 
 addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
 

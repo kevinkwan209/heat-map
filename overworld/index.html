@@ -29,10 +29,9 @@ var randomnos = Math.ceil(Math.random() * 1000000000);
 var mysource = "heatmap_overworld.js?rand="+randomnos+"";
 
 window.onload = function() {
-   $.getScript(mysource,function(){console.log('loaded')})
-}
+    $.getScript(mysource,function(){console.log('loaded')});
 
-L.CursorHandler = L.Handler.extend({
+    L.CursorHandler = L.Handler.extend({
 
     addHooks: function () {
         this._popup = new L.Popup();
@@ -276,6 +275,8 @@ var heat = L.heatLayer(addressPoints, {minOpacity: 1, max: 100, radius: 1, blur:
     draw = true;
 
 L.DomUtil.addClass(map._container,'crosshair-cursor-enabled');
+    
+}
 
 </script>
 </body>

@@ -22,9 +22,9 @@
 
 <script src="../dist/leaflet-heat.js"></script>
 
-<script src="heatmap_overworld.js"></script>
+<script src="heatmap_end.js"></script>
 <script>
-    
+
 L.CursorHandler = L.Handler.extend({
 
     addHooks: function () {
@@ -63,7 +63,7 @@ L.Map.addInitHook('addHandler', 'cursor', L.CursorHandler);
 
 var map = new L.Map('map', {
     center: [0, 0],
-    zoom: 5,
+    zoom: 6,
     cursor: true
 });
     

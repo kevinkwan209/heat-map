@@ -24,7 +24,7 @@
 <script src="../dist/leaflet-heat.js"></script>
 
 var randomnos = Math.ceil(Math.random() * 1000000000);
-var mysource = "heatnmal_overworld.js?rand="+randomnos+"";
+var mysource = "heatmap_overworld.js?rand="+randomnos+"";
 
 window.onload = function() {
    $.getScript(mysource,function(){console.log('loaded')})

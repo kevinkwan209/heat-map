@@ -25,6 +25,12 @@
 <script src="heatmap_overworld.js"></script>
 <script>
 
+var map = new L.Map('map', {
+    center: [0, 0],
+    zoom: 5,
+    cursor: true
+});
+    
 L.CursorHandler = L.Handler.extend({
 
     addHooks: function () {
@@ -53,19 +59,13 @@ L.CursorHandler = L.Handler.extend({
 
     _update: function (e) {
         this._popup.setLatLng(e.latlng)
-            .setContent(parseInt(e.latlng.lng * 1000000) + "," + parseInt(e.latlng.lat * -1000000) + ": " + e.getValueAt({ x: e.latlng.lat,  y: e.latlng.lng}));
+            .setContent(parseInt(e.latlng.lng * 1000000) + "," + parseInt(e.latlng.lat * -1000000) + ": " + map.getValueAt({ x: e.latlng.lat,  y: e.latlng.lng}));
     }
 
     
 });
 
 L.Map.addInitHook('addHandler', 'cursor', L.CursorHandler);
-
-var map = new L.Map('map', {
-    center: [0, 0],
-    zoom: 5,
-    cursor: true
-});
     
 var latlngs = [
     [[2, 2],

@@ -6,7 +6,6 @@
     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <style>
         #map { width: 100%; height: 100vh; background-color:#000000}
         body { font: 16px/1.4 "Helvetica Neue", Arial, sans-serif; margin: 0}
@@ -23,15 +22,11 @@
 
 <script src="../dist/leaflet-heat.js"></script>
 
+<script src="heatmap_overworld.js"></script>
+
 <script>
 
-var randomnos = Math.ceil(Math.random() * 1000000000);
-var mysource = "heatmap_overworld.js?rand="+randomnos+"";
-
-window.onload = function() {
-    $.getScript(mysource,function(){console.log('loaded')});
-
-    L.CursorHandler = L.Handler.extend({
+L.CursorHandler = L.Handler.extend({
 
     addHooks: function () {
         this._popup = new L.Popup();

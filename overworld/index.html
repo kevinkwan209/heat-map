@@ -24,12 +24,6 @@
 
 <script src="heatmap_overworld.js"></script>
 <script>
-
-var map = new L.Map('map', {
-    center: [0, 0],
-    zoom: 5,
-    cursor: true
-});
     
 L.CursorHandler = L.Handler.extend({
 
@@ -66,6 +60,12 @@ L.CursorHandler = L.Handler.extend({
 });
 
 L.Map.addInitHook('addHandler', 'cursor', L.CursorHandler);
+
+var map = new L.Map('map', {
+    center: [0, 0],
+    zoom: 5,
+    cursor: true
+});
     
 var latlngs = [
     [[2, 2],

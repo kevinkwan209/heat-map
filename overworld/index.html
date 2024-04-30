@@ -23,12 +23,12 @@
 
 <script src="../dist/leaflet-heat.js"></script>
 
-$.getScript( "heatmap_overworld.js?rand=" + Date.now() + "", function( data, textStatus, jqxhr ) {
-  console.log( data ); // Data returned
-  console.log( textStatus ); // Success
-  console.log( jqxhr.status ); // 200
-  console.log( "Load was performed." );
-});
+var randomnos = Math.ceil(Math.random() * 1000000000);
+var mysource = "heatnmal_overworld.js?rand="+randomnos+"";
+
+window.onload = function() {
+   $.getScript(mysource,function(){console.log('loaded')})
+}
     
 <script>
     

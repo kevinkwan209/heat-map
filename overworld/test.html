@@ -272,7 +272,7 @@ L.DomUtil.addClass(map._container,'crosshair-cursor-enabled');
 
 map.on('click', function(e){
     var marker = new L.marker(e.latlng).addTo(map).on('click', e => e.target.remove());
-    marker.bindPopup(parseInt(e.latlng.lng * 1000000) + "," + parseInt(e.latlng.lat * -1000000));
+    marker.bindPopup(parseInt(e.latlng.lng * 1000000) + "," + parseInt(e.latlng.lat * -1000000)).openPopup();
 });
     
 </script>

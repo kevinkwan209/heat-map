@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Overworld Heatmap</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <style>
+        #map { width: 100%; height: 100vh; background-color:#000000}
+        body { font: 16px/1.4 "Helvetica Neue", Arial, sans-serif; margin: 0}
+        .leaflet-container a.leaflet-popup-close-button {color: #FFFFFF;}
+        .leaflet-container.crosshair-cursor-enabled {cursor:crosshair;}
+        .leaflet-interactive {cursor: crosshair;}
+        .ghbtns { position: relative; top: 4px; margin-left: 5px; }
+        a { color: #0077ff; }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="../dist/leaflet-heat.js"></script>
+
+<script src="heatmap_overworld.js"></script>
+<script>
+
+L.CursorHandler = L.Handler.extend({
+
+    addHooks: function () {
+        this._popup = new L.Popup();
+        this._map.on('mouseover', this._open, this);
+        this._map.on('mousemove', this._update, this);
+        this._map.on('mouseout', this._close, this);
+        this._map.on('click', this._open, this);
+    },
+
+    removeHooks: function () {
+        this._map.off('mouseover', this._open, this);
+        this._map.off('mousemove', this._update, this);
+        this._map.off('mouseout', this._close, this);
+        this._map.off('click', this._open, this);
+    },
+    
+    _open: function (e) {
+        this._update(e);
+        this._popup.openOn(this._map);
+    },
+
+    _close: function () {
+        this._map.closePopup(this._popup);
+    },
+
+    _update: function (e) {
+        this._popup.setLatLng(e.latlng)
+            .setContent(parseInt(e.latlng.lng * 1000000) + "," + parseInt(e.latlng.lat * -1000000));
+    }
+
+    
+});
+
+L.Map.addInitHook('addHandler', 'cursor', L.CursorHandler);
+
+var map = new L.Map('map', {
+    center: [0, 0],
+    zoom: 5,
+    cursor: true
+});
+    
+var latlngs = [
+    [[2, 2],
+    [2, -2],
+    [-2, -2],
+    [-2, 2],
+    [2, 2]],
+    
+    [[4, 4],
+    [4, -4],
+    [-4, -4],
+    [-4, 4],
+    [4, 4]],
+    
+    [[6, 6],
+    [6, -6],
+    [-6, -6],
+    [-6, 6],
+    [6, 6]],
+
+    [[8, 8],
+    [8, -8],
+    [-8, -8],
+    [-8, 8],
+    [8, 8]],
+
+    [[10, 10],
+    [10, -10],
+    [-10, -10],
+    [-10, 10],
+    [10, 10]],
+
+    [[15, 15],
+    [15, -15],
+    [-15, -15],
+    [-15, 15],
+    [15, 15]],
+
+    [[20, 20],
+    [20, -20],
+    [-20, -20],
+    [-20, 20],
+    [20, 20]],
+    
+    [[30, 30],
+    [30, -30],
+    [-30, -30],
+    [-30, 30],
+    [30, 30]],
+
+    [[30, 0],
+    [-30, 0]],
+
+    [[0, 30],
+    [0, -30]],
+
+    [[0, 0],
+    [-2, 2],
+    [-4, 4],
+    [-6, 6],
+    [-8, 8],
+    [-10, 10],
+    [-12, 12],
+    [-14, 14],
+    [-15, 15],
+    [-16, 16],
+    [-18, 18],
+    [-20, 20],
+    [-22, 22],
+    [-24, 24],
+    [-26, 26],
+    [-28, 28],
+    [-30, 30]],
+
+    [[0, 0],
+    [2, 2],
+    [4, 4],
+    [6, 6],
+    [8, 8],
+    [10, 10],
+    [12, 12],
+    [14, 14],
+    [15, 15],
+    [16, 16],
+    [18, 18],
+    [20, 20],
+    [22, 22],
+    [24, 24],
+    [26, 26],
+    [28, 28],
+    [30, 30]],
+
+    [[0, 0],
+    [-2, -2],
+    [-4, -4],
+    [-6, -6],
+    [-8, -8],
+    [-10, -10],
+    [-12, -12],
+    [-14, -14],
+    [-15, -15],
+    [-16, -16],
+    [-18, -18],
+    [-20, -20],
+    [-22, -22],
+    [-24, -24],
+    [-26, -26],
+    [-28, -28],
+    [-30, -30]],
+
+    [[0, 0],
+    [2, -2],
+    [4, -4],
+    [6, -6],
+    [8, -8],
+    [10, -10],
+    [12, -12],
+    [14, -14],
+    [15, -15],
+    [16, -16],
+    [18, -18],
+    [20, -20],
+    [22, -22],
+    [24, -24],
+    [26, -26],
+    [28, -28],
+    [30, -30]],
+    
+    [[0, 30],
+    [-2, 28],
+    [-4, 26],
+    [-6, 24],
+    [-8, 22],
+    [-10, 20],
+    [-12, 18],
+    [-14, 16],
+    [-15, 15],
+    [-16, 14],
+    [-18, 12],
+    [-20, 10],
+    [-22, 8],
+    [-24, 6],
+    [-26, 4],
+    [-28, 2],
+    [-30, 0],
+    [-28, -2],
+    [-26, -4],
+    [-24, -6],
+    [-22, -8],
+    [-20, -10],
+    [-18, -12],
+    [-16, -14],
+    [-15, -15],
+    [-14, -16],
+    [-12, -18],
+    [-10, -20],
+    [-8, -22],
+    [-6, -24],
+    [-4, -26],
+    [-2, -28],
+    [0, -30],
+    [2, -28],
+    [4, -26],
+    [6, -24],
+    [8, -22],
+    [10, -20],
+    [12, -18],
+    [14, -16],
+    [15, -15],
+    [16, -14],
+    [18, -12],
+    [20, -10],
+    [22, -8],
+    [24, -6],
+    [26, -4],
+    [28, -2],
+    [30, 0],
+    [28, 2],
+    [26, 4],
+    [24, 6],
+    [22, 8],
+    [20, 10],
+    [18, 12],
+    [16, 14],
+    [15, 15],
+    [14, 16],
+    [12, 18],
+    [10, 20],
+    [8, 22],
+    [6, 24],
+    [4, 26],
+    [2, 28],
+    [0, 30]]
+];
+
+var polyline = L.polyline(latlngs, {color: '#D3D3D3', weight: 2, opacity: 0.2}).addTo(map);
+
+addressPoints = addressPoints.map(function (p) { return [p[0], p[1]]; });
+
+var heat = L.heatLayer(addressPoints, {minOpacity: 1, max: 100, radius: 1, blur: 1}).addTo(map),
+    draw = true;
+
+L.DomUtil.addClass(map._container,'crosshair-cursor-enabled');
+
+map.on('click', function(e){
+    var marker = new L.marker(e.latlng).addTo(map).on('click', e => e.target.remove());
+    marker.bindPopup(parseInt(e.latlng.lng * 1000000) + "," + parseInt(e.latlng.lat * -1000000));
+});
+    
+</script>
+</body>
+</html>
